@@ -69,10 +69,9 @@ class Converter:
         self.help_button.grid(row=0, column=1)
 
 
+# main routine
 if __name__ == "__main__":
-    
-    # main routine
-    root =tk()
+    root = Tk()
     root.title()
     something = Converter()
     root.mainloop()
