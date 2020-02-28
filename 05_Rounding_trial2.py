@@ -18,4 +18,7 @@ def temp_check(low):
 # main routine
 # run this code twice (for two valid responses in test plan)
 number = temp_check(-273)
-print
+print("You chose {}".format(number))
+
+number = temp_check(-459)
+print("You chose {}".format(number))
