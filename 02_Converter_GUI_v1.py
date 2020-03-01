@@ -89,11 +89,25 @@ class Converter:
                 fahrenheit = self.round_it(fahrenheit)
                 answer = "{} degrees C is {} degrees F".format(to_convert, fahrenheit)
 
-             # Convert to C
+            # Check and convert to Centigrade
+            elif low == -273 and to_convert >= low:
+                fahrenheit = (to_convert - 32) * 5/9
+                to_convert = self.round_it(to_convert)
+                celsius = self.round_it(celsius)
+                answer = "{} degrees C is {} degrees F".format(to_convert, celsius)
 
-            # Round!!
+            else:
+                # Input is invalid (too cold)!!
+                answer = "Too Cold!"
+                has_errors = "Yes"
 
             # Display answer
+            if has_errors == "no":
+                self.converter_label.configure(text=answer, fg="bule")
+                self.to_convert_entry.configure(bg="white")
+            else:
+                self.converter_label.configure(text=answer, fg="red")
+                self.to_convert_entry.configure(bg=error)
 
             # Add Answer to list for history
 
@@ -101,11 +115,19 @@ class Converter:
             self.converted_label.configure(text="Enter a number!!", fg="red")
             self.to_convert_entry.configure(bg=error)
 
+    def round_it(self, to_round):
+        if to_round % 1 == 0:
+            rounded = int(to_round)
+        else:
+            rounded = round(to_round, 1)
+
+        return rounded
+
 
 
 # main routine
 if __name__ == "__main__":
     root = Tk()
-    root.title()
+    root.title("Temperature Converter")
     something = Converter()
     root.mainloop()
