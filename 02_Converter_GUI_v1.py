@@ -59,15 +59,15 @@ class Converter:
         self.converter_label.grid(row=4)
 
         # History / Help button frame (row 5)
-        self.hist_help_frame =Frame(self.converter_frame)
+        self.hist_help_frame = Frame(self.converter_frame)
         self.hist_help_frame.grid(row=5, pady=10)
 
-        self.calc_hist_button =Button(self.hist_help_frame, font="Arial 12 bold",
-                                      text="Calculation History", width=15)
+        self.calc_hist_button = Button(self.hist_help_frame, font="Arial 12 bold",
+                                       text="Calculation History", width=15)
         self.calc_hist_button.grid(row=0, column=0)
 
         self.help_button = Button(self.hist_help_frame, font="Arial 12 bold",
-                                       text="Help", width=5)
+                                  text="Help", width=5)
         self.help_button.grid(row=0, column=1)
 
     def temp_convert(self, low):
@@ -90,8 +90,8 @@ class Converter:
                 answer = "{} degrees C is {} degrees F".format(to_convert, fahrenheit)
 
             # Check and convert to Centigrade
-            elif low == -273 and to_convert >= low:
-                fahrenheit = (to_convert - 32) * 5/9
+            elif low == -459 and to_convert >= low:
+                celsius = (to_convert - 32) * 5/9
                 to_convert = self.round_it(to_convert)
                 celsius = self.round_it(celsius)
                 answer = "{} degrees C is {} degrees F".format(to_convert, celsius)
@@ -103,7 +103,7 @@ class Converter:
 
             # Display answer
             if has_errors == "no":
-                self.converter_label.configure(text=answer, fg="bule")
+                self.converter_label.configure(text=answer, fg="blue")
                 self.to_convert_entry.configure(bg="white")
             else:
                 self.converter_label.configure(text=answer, fg="red")
@@ -112,7 +112,7 @@ class Converter:
             # Add Answer to list for history
 
         except ValueError:
-            self.converted_label.configure(text="Enter a number!!", fg="red")
+            self.converter_label.configure(text="Enter a number!!", fg="red")
             self.to_convert_entry.configure(bg=error)
 
     def round_it(self, to_round):
