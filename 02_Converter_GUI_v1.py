@@ -110,6 +110,9 @@ class Converter:
                 self.to_convert_entry.configure(bg=error)
 
             # Add Answer to list for history
+                if answer != "Too Cold":
+                    self.all_calculations.append(answer)
+                    print(self.all_calculations)
 
         except ValueError:
             self.converter_label.configure(text="Enter a number!!", fg="red")
