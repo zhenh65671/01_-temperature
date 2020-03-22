@@ -45,7 +45,7 @@ class Converter:
 class History:
     def __init__(self, partner, calc_history):
 
-        background = "orange"
+        background = "pink"
 
         # disable history button
         partner.history_button.config(state=DISABLED)
@@ -92,7 +92,11 @@ class History:
             for item in calc_history:
                 history_string += calc_history[len(calc_history) -
                                                calc_history.index(item) - 1] + "\n"
-                self.history_text.config(text="Here is your calculation ")
+                self.history_text.config(text="Here is your calculation "
+                                              "history. You can ues the "
+                                              "export button to save this "
+                                              "data ato a text file if "
+                                              "desired.")
 
         # Label to display calculation history to user
         self.calc_label = Label(self.history_frame, text=history_string,
