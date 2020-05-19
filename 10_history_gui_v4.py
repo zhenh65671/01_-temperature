@@ -5,8 +5,6 @@ import random
 
 
 
-
-
 class Converter:
     def __init__(self):
 
@@ -14,11 +12,15 @@ class Converter:
         background_color = "light blue"
 
         # In actual program this blank and is populated with user calculations
-        self.all_calc_list = ['0 degrees C is -17.8 degrees F',
-                              '0 degrees C is 32 degrees F',
-                              '40 degrees C is 104 degrees F',
-                              '40 degrees C is 4.4 degrees F',
-                              '12 degrees C is 53.6 degrees F', ]
+
+        '''self.all_calc_list = ['5 degrees C is -17.2 degrees F',
+                                 '6 degrees C is -16.7 degrees F',
+                                 '7 degrees C is -16.1 degrees F',
+                                 '8 degrees C is -15.8 degrees F',
+                                 '9 degrees C is -15.1 degrees F',
+                                ]'''
+
+        self.all_calc_list = []
 
         # Converter Main Screen GUI...
         self.converter_frame = Frame(width=400, height=400, bg=background_color,
@@ -27,7 +29,8 @@ class Converter:
 
         # Temperature Converter Heading (row 0)
         self.temp_heading_label = Label(self.converter_frame, text="Temperature Converter",
-                                        font="Arial 19 bold", bg=background_color,
+                                        font="Arial 19 bold",
+                                        bg=background_color,
                                         padx=10, pady=10)
         self.temp_heading_label.grid(row=0)
 
@@ -37,6 +40,9 @@ class Converter:
                                      padx=10, pady=10,
                                      command=lambda: self.history(self.all_calc_list))
         self.history_button.grid(row=1)
+
+        if len(self.all_calc_list) == 0:
+            self.history_button.config(state=DISABLED)
 
     def history(self, calc_history):
         History(self, calc_history)
