@@ -50,7 +50,7 @@ class Converter:
 class History:
     def __init__(self, partner, calc_history):
 
-        background = "pink"
+        background = "#0C51F1"
 
         # disable history button
         partner.history_button.config(state=DISABLED)
@@ -79,7 +79,7 @@ class History:
                                                  "file of all your calculations for "
                                                  "this session", wrap=250,
                                             font="arial 10 italic",
-                                            justify=LEFT, width=40, bg=background, fg="maroon",
+                                            justify=LEFT, width=40, bg=background, fg="#1C191A",
                                             padx=10, pady=10)
         self.history_text.grid(row=1)
 
@@ -199,14 +199,16 @@ class Export:
         
 
     def close_export(self, partner):
-        # Put export button back to normal...
-        partner.export_button.config(state=NORMAL)
-        self.export_box.destroy()
+     # Put export button back to normal...
+     partner.export_button.config(state=NORMAL)
+     self.export_box.destroy()
 
+    def save_history(self, partner, calc_history):
+        print("")
 
 # main routine
 if __name__ == "__main__":
     root = Tk()
-    root.title("title goes here")
+    root.title("Temperature Converter ")
     something = Converter()
     root.mainloop()
